@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1>{{ object.title }}</h1>
+  <p>{{ object.body }}</p>
+  <p>{{ object.author }} | {{ object.date }}</p>
+  {% for comment in object.comments.all %}
+  <p>{{ comment.author }}</p>
+  <p>{{ comment.comment }}</p>
+  {% endfor %}
+  <a href="{% url 'edit_article' object.pk%}">Edit</a> |
+  <a href="{% url 'delete_article' object.pk%}">Delete</a>
+  <p><a href="{% url 'article_list' %}">Go Back to All.</a></p>
+</div>
+{% endblock %}
